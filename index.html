@@ -7,6 +7,14 @@
 	<svg id="svg" xmlns="http://www.w3.org/2000/svg"></svg>
 
 	<script>
+	function resize()
+            {
+                var h = window.innerHeight;
+				var w = window.innerWidth;
+                document.getElementById("svg").style.height = h + "px";
+				document.getElementById("svg").style.width = w + "px";
+            }
+
 	function Circle(cx, cy, html_id)
 	{
 		var html_id = html_id;
@@ -92,11 +100,16 @@
 		this.createNewCircle(document.body.clientWidth/2, document.body.clientHeight/2);
 	}
 
+	resize();
 	var playground = new PlayGround();
 	setInterval(playground.loop, 15);
 
 	document.onclick = function(e) {
 		playground.createNewCircle(e.x,e.y);
+	}
+
+	window.onresize = function() {
+		resize();
 	}
 	
 	</script>
